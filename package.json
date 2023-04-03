@@ -1,0 +1,66 @@
+{
+  "name": "pkg-name",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.1.0",
+  "description": "",
+  "author": "Julio Gimenez <julio.visionarte@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/juliogimenez/pkg-name#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juliogimenez/pkg-name.git"
+  },
+  "bugs": "https://github.com/juliogimenez/pkg-name/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && node scripts/build.js",
+    "watch": "node scripts/build.js -w",
+    "format": "prettier --write --cache .",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/node": "^18.15.11",
+    "eslint": "^8.37.0",
+    "lint-staged": "^13.2.0",
+    "pnpm": "^8.1.0",
+    "prettier": "^2.8.7",
+    "rimraf": "^4.4.1",
+    "rollup": "^3.20.2",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^5.0.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
+  }
+}
